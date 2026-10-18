@@ -1,0 +1,23 @@
+RECRUWEB SAME-ORIGIN HOSTINGER FINAL
+
+Domain:
+  https://recruweb.com
+
+Frontend and API are served by the same Node/Express application.
+  /              -> frontend/dist/index.html
+  /api/*         -> backend API routes
+  /uploads/*     -> uploaded files
+  /socket.io/*   -> Socket.IO
+
+Startup:
+  start.cjs
+
+IMPORTANT:
+- Keep the existing database credentials/environment values unchanged.
+- Deploy this folder as the Node.js application root.
+- Do not separately map recruweb.com to a different static application after deploying this package.
+- Restart/redeploy after upload.
+- Clear browser cache or hard refresh once after deployment.
+
+Diagnostics:
+  https://recruweb.com/api/health

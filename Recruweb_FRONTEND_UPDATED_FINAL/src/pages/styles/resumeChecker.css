@@ -1,0 +1,202 @@
+/* =================================================================     RESUME CHECKER & UPLOAD DROPZONE STYLING     ================================================================= */
+
+.resume-checker-page {
+  padding: 32px;
+  background: #090d16;
+  min-height: calc(100vh - 70px);
+  color: #f1f5f9;
+  font-family:
+    "Inter",
+    system-ui,
+    -apple-system,
+    sans-serif;
+}
+
+.rc-hero {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 36px auto;
+}
+
+.rc-hero h1 {
+  font-size: 2.25rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 10px;
+}
+
+.rc-hero p {
+  color: #94a3b8;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.rc-body {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 32px;
+  max-width: 1200px;
+  margin: 0 auto;
+  align-items: start;
+}
+
+.rc-upload-col {
+  background: #111827;
+  border: 1px solid #1f2937;
+  border-radius: 16px;
+  padding: 28px;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.4);
+}
+
+.rc-side {
+  background: #111827;
+  border: 1px solid #1f2937;
+  border-radius: 16px;
+  padding: 24px;
+  position: sticky;
+  top: 90px;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.4);
+}
+
+.rc-side h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #f3f4f6;
+  margin-bottom: 14px;
+}
+
+.rc-checklist {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  font-size: 0.85rem;
+  color: #94a3b8;
+  line-height: 1.4;
+  margin-bottom: 20px;
+}
+
+.rc-checklist li {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.rc-checklist strong {
+  color: #f3f4f6;
+}
+
+.rc-side .rb-muted {
+  font-size: 0.82rem;
+  color: #94a3b8;
+  border-top: 1px solid #1f2937;
+  padding-top: 14px;
+}
+
+.rc-side .rb-muted a {
+  color: #60a5fa;
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+/* --- DRAG & DROP FILE UPLOAD BOX --- */
+.rc-file-dropzone {
+  border: 2px dashed #4b5563;
+  background: #1a2234;
+  border-radius: 12px;
+  padding: 28px 20px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.rc-file-dropzone:hover {
+  border-color: #3b82f6;
+  background: #1f2937;
+}
+
+.rc-dropzone-content {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.rc-upload-icon {
+  font-size: 2.2rem;
+}
+
+.rc-file-info-placeholder,
+.rc-file-info-active {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  gap: 4px;
+}
+
+.rc-file-info-placeholder strong,
+.rc-file-info-active strong {
+  font-size: 0.95rem;
+  color: #f9fafb;
+}
+
+.rc-change-file {
+  font-size: 0.78rem;
+  color: #60a5fa;
+}
+
+/* Form Inputs inside Checker */
+.rc-upload-col label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #f1f5f9;
+}
+
+.rc-upload-col input,
+.rc-upload-col textarea {
+  border: 1px solid #4b5563;
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #ffffff;
+  background: #1f2937;
+  outline: none;
+  width: 100%;
+  font-family: inherit;
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s;
+}
+
+.rc-upload-col input:focus,
+.rc-upload-col textarea:focus {
+  border-color: #60a5fa;
+  background: #111827;
+  box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.25);
+}
+
+.rc-check-btn {
+  width: 100%;
+  margin-top: 20px;
+  padding: 12px;
+  font-size: 1rem;
+  font-weight: 700;
+  background: #3b82f6;
+  color: white;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.35);
+  transition: background 0.2s;
+}
+
+.rc-check-btn:hover {
+  background: #2563eb;
+}

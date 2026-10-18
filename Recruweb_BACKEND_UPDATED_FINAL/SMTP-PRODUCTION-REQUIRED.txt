@@ -1,0 +1,19 @@
+PASSWORD RESET EMAIL - PRODUCTION CHECK
+
+The code is configured for Gmail SMTP. If runtime logs show EAUTH / Username and Password not accepted, this is a Google credential rejection, not an API route bug.
+
+In Google Account > Security > 2-Step Verification > App passwords:
+1. Generate a NEW Mail app password.
+2. Set SMTP_USER to the Gmail account that generated it.
+3. Set SMTP_APP_PASSWORD (preferred) or SMTP_PASS to the new 16-character value.
+4. Restart/redeploy the Node backend after changing environment variables.
+
+Recommended:
+SMTP_HOST=smtp.gmail.com
+SMTP_PORT=587
+SMTP_USER=your-gmail@example.com
+SMTP_APP_PASSWORD=your-16-character-app-password
+FROM_EMAIL=same Gmail address or a verified Gmail alias
+FRONTEND_URL=https://recruweb.com
+
+Do not put normal Gmail account passwords here.

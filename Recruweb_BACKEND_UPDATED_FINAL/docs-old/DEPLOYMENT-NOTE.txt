@@ -1,0 +1,13 @@
+HOSTINGER DEPLOYMENT FIX
+
+This backend package includes the exact updated frontend production build at:
+frontend/dist
+
+The Node/Express application serves the frontend itself from the same origin.
+This prevents the domain root from returning "Cannot GET /" when the Hostinger
+Node application is mapped directly to recruweb.com.
+
+Deploy this complete backend package as the Hostinger Node.js application.
+The separate frontend ZIP remains available as a standalone public_html build,
+but when the Node app owns the root domain, this bundled frontend is the one
+served by Express.

@@ -1,0 +1,130 @@
+/* =====================================================================
+   RECRUWEB — SCROLL PERFORMANCE + MOBILE FRIENDLY LAYER
+   Loaded AFTER index.css so it safely overrides the earlier motion layers.
+   ===================================================================== */
+
+/* ---------- 1. Normal-speed native scrolling ---------- */
+html { scroll-behavior: auto; -webkit-text-size-adjust: 100%; }
+body { overscroll-behavior-y: auto; }
+
+/* ---------- 2. Lightweight reveal animations (no blur, short, GPU friendly) ----------
+   The old layers animated `filter: blur()` on whole sections with 0.7–1s
+   durations and 3D rotations. That forced a full repaint on every frame while
+   scrolling and made content appear "late" (felt like slow scrolling). */
+@keyframes rwRevealRight    { from { opacity: 0; transform: translate3d(24px, 0, 0); } to { opacity: 1; transform: none; } }
+@keyframes rwRevealLeft     { from { opacity: 0; transform: translate3d(-24px, 0, 0); } to { opacity: 1; transform: none; } }
+@keyframes rwRevealUp       { from { opacity: 0; transform: translate3d(0, 24px, 0); } to { opacity: 1; transform: none; } }
+@keyframes rwCinematicSection { from { opacity: 0; transform: translate3d(0, 24px, 0); } to { opacity: 1; transform: none; } }
+@keyframes rwCinematicUp    { from { opacity: 0; transform: translate3d(0, 24px, 0); } to { opacity: 1; transform: none; } }
+@keyframes rwCinematicDown  { from { opacity: 0; transform: translate3d(0, -24px, 0); } to { opacity: 1; transform: none; } }
+@keyframes rwCinematicLeft  { from { opacity: 0; transform: translate3d(-24px, 0, 0); } to { opacity: 1; transform: none; } }
+@keyframes rwCinematicRight { from { opacity: 0; transform: translate3d(24px, 0, 0); } to { opacity: 1; transform: none; } }
+@keyframes rwChildUp        { from { opacity: 0; transform: translate3d(0, 18px, 0); } to { opacity: 1; transform: none; } }
+@keyframes rwChildDown      { from { opacity: 0; transform: translate3d(0, -18px, 0); } to { opacity: 1; transform: none; } }
+@keyframes rwChildLeft      { from { opacity: 0; transform: translate3d(-18px, 0, 0); } to { opacity: 1; transform: none; } }
+@keyframes rwChildRight     { from { opacity: 0; transform: translate3d(18px, 0, 0); } to { opacity: 1; transform: none; } }
+@keyframes rwCinematicChild      { from { opacity: 0; transform: translate3d(0, 18px, 0); } to { opacity: 1; transform: none; } }
+@keyframes rwCinematicChildUp    { from { opacity: 0; transform: translate3d(0, 18px, 0); } to { opacity: 1; transform: none; } }
+@keyframes rwCinematicChildDown  { from { opacity: 0; transform: translate3d(0, -18px, 0); } to { opacity: 1; transform: none; } }
+@keyframes rwCinematicChildLeft  { from { opacity: 0; transform: translate3d(-18px, 0, 0); } to { opacity: 1; transform: none; } }
+@keyframes rwCinematicChildRight { from { opacity: 0; transform: translate3d(18px, 0, 0); } to { opacity: 1; transform: none; } }
+
+/* Not-yet-revealed state: simple fade/slide, never blur, no permanent layer promotion. */
+.rw-motion-ready main section.rw-section-reveal.rw-motion-pending,
+.rw-motion-ready main section.rw-section-reveal.rw-motion-pending.rw-reveal-right,
+.rw-motion-ready main section.rw-section-reveal.rw-motion-pending.rw-reveal-left,
+.rw-motion-ready main section.rw-section-reveal.rw-motion-pending.rw-reveal-up,
+.rw-motion-ready main section.rw-section-reveal.rw-motion-pending.rw-reveal-down {
+  opacity: 0;
+  transform: translate3d(0, 24px, 0);
+  filter: none !important;
+  will-change: auto !important;
+}
+.rw-motion-ready main section .rw-motion-child.rw-motion-pending,
+.rw-motion-ready main section .rw-motion-child.rw-motion-pending.rw-child-left,
+.rw-motion-ready main section .rw-motion-child.rw-motion-pending.rw-child-right,
+.rw-motion-ready main section .rw-motion-child.rw-motion-pending.rw-child-up,
+.rw-motion-ready main section .rw-motion-child.rw-motion-pending.rw-child-down {
+  opacity: 0;
+  transform: translate3d(0, 18px, 0);
+  filter: none !important;
+  will-change: auto !important;
+}
+
+/* Faster, minimal stagger (was up to 1s + 660ms delay). */
+.rw-motion-ready main section.rw-section-reveal.is-visible { animation-duration: .45s !important; }
+.rw-motion-ready main section .rw-motion-child.is-visible {
+  animation-duration: .4s !important;
+  animation-delay: calc(var(--rw-child-delay, 0ms) / 5) !important;
+}
+
+/* ---------- 3. Pause off-screen animations (class set by ScrollMotion.jsx) ---------- */
+.rw-paused *,
+.rw-paused *::before,
+.rw-paused *::after { animation-play-state: paused !important; }
+
+/* Cards: keep hover feedback cheap */
+.rw-motion-ready main section .rw-motion-child:hover { transform: translate3d(0, -4px, 0); }
+
+/* ---------- 4. Mobile / touch devices: drop the most expensive effects ---------- */
+@media (max-width: 900px), (pointer: coarse) {
+  /* Backdrop blur re-samples the page behind it on every scroll frame. */
+  main *, footer * { -webkit-backdrop-filter: none !important; backdrop-filter: none !important; }
+  /* Large blurred decorative glows are very costly on phone GPUs. */
+  .rw-hero-orb, .rw-hero-orbit, .rw-hero-dots { display: none !important; }
+  .rw-motion-ready main section .rw-motion-child { transition: none !important; }
+  .rw-motion-ready main section .rw-motion-child:hover { transform: none; }
+}
+
+/* ---------- 5. Mobile friendly layout fixes (public site only; portals untouched) ---------- */
+html, body { max-width: 100%; overflow-x: clip; }
+img, video, canvas, iframe { max-width: 100%; }
+img { height: auto; }
+img[width][height] { height: auto; }
+
+@media (max-width: 768px) {
+  /* Prevent iOS auto-zoom when focusing a field. */
+  .app:not(.app--portal) input,
+  .app:not(.app--portal) select,
+  .app:not(.app--portal) textarea { font-size: 16px; }
+
+  /* Inline 2/3/4-column grids (used by several forms/pages) collapse to one column. */
+  .app:not(.app--portal) main [style*="grid-template-columns: 1fr 1fr"],
+  .app:not(.app--portal) main [style*="grid-template-columns:1fr 1fr"],
+  .app:not(.app--portal) main [style*="grid-template-columns: repeat(2"],
+  .app:not(.app--portal) main [style*="grid-template-columns: repeat(3"],
+  .app:not(.app--portal) main [style*="grid-template-columns: repeat(4"],
+  .app:not(.app--portal) main [style*="grid-template-columns: 2fr"],
+  .app:not(.app--portal) main [style*="grid-template-columns: 1fr 2fr"] {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Wide tables scroll sideways inside themselves instead of stretching the page. */
+  .app:not(.app--portal) main table {
+    display: block;
+    max-width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Comfortable side padding + wrapped long words on small screens. */
+  .app:not(.app--portal) .container,
+  .app:not(.app--portal) .rw-container { padding-left: 16px; padding-right: 16px; }
+  .app:not(.app--portal) main h1,
+  .app:not(.app--portal) main h2,
+  .app:not(.app--portal) main h3,
+  .app:not(.app--portal) main p { overflow-wrap: anywhere; }
+
+  /* Easier tap targets for buttons/links styled as buttons. */
+  .app:not(.app--portal) main button,
+  .app:not(.app--portal) main .btn,
+  .app:not(.app--portal) main [class*="btn-"] { min-height: 44px; }
+
+  /* Floating assistants should not cover content/footers. */
+  .rw-voice-control { right: 10px; bottom: 10px; }
+}
+
+@media (max-width: 480px) {
+  .app:not(.app--portal) main section { padding-left: 0; padding-right: 0; }
+  .section-title, .rw-hero h1 { word-break: normal; }
+}

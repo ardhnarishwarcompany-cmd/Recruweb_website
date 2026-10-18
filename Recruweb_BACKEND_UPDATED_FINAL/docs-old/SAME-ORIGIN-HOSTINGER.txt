@@ -1,0 +1,19 @@
+RECRUWEB SAME-ORIGIN HOSTINGER PACKAGE
+
+This package is designed to run FRONTEND + BACKEND from the same Node.js application/domain:
+https://recruweb.com
+
+API base:
+https://recruweb.com/api
+
+Health check:
+https://recruweb.com/api/health
+
+Important Hostinger settings:
+- Node.js application domain: recruweb.com
+- Startup file: start.cjs
+- Do NOT point recruweb.com to a separate static public_html at the same time.
+- The bundled frontend is in frontend/dist and is served by Express.
+- Keep the MySQL environment variables configured in Hostinger.
+- PORT should be supplied by Hostinger; the app falls back to 5000 for local use.
+- After deployment, restart the Node.js application.

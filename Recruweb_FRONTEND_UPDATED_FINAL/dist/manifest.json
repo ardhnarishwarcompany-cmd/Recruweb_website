@@ -1,0 +1,53 @@
+{
+  "name": "Recruweb - Recruitment Agency",
+  "short_name": "Recruweb",
+  "description": "Find jobs, post jobs, and connect with top talent",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "display_override": ["standalone", "minimal-ui"],
+  "background_color": "#ffffff",
+  "theme_color": "#667eea",
+  "orientation": "any",
+  "icons": [
+    {
+      "src": "/images/Recruweb Logo Image.jfif",
+      "sizes": "192x192",
+      "type": "image/jpeg",
+      "purpose": "any"
+    },
+    {
+      "src": "/images/Recruweb Logo Image.jfif",
+      "sizes": "512x512",
+      "type": "image/jpeg",
+      "purpose": "any"
+    },
+    {
+      "src": "/images/Recruweb Logo Image.jfif",
+      "sizes": "any",
+      "type": "image/jpeg",
+      "purpose": "maskable"
+    }
+  ],
+  "categories": ["business", "productivity"],
+  "lang": "en",
+  "dir": "ltr",
+  "prefer_related_applications": false,
+  "related_applications": [],
+  "shortcuts": [
+    {
+      "name": "Find Jobs",
+      "short_name": "Jobs",
+      "description": "Search and apply for jobs",
+      "url": "/jobs",
+      "icons": [{ "src": "/images/Recruweb Logo Image.jfif", "sizes": "96x96" }]
+    },
+    {
+      "name": "Post a Job",
+      "short_name": "Post",
+      "description": "Post a new job opening",
+      "url": "/post-job",
+      "icons": [{ "src": "/images/Recruweb Logo Image.jfif", "sizes": "96x96" }]
+    }
+  ]
+}

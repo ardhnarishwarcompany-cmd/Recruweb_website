@@ -1,0 +1,652 @@
+/* ==================== AUTH CONTAINER ==================== */
+.auth-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.auth-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  max-width: 1000px;
+  width: 100%;
+  align-items: center;
+}
+
+.auth-card {
+  background: var(--surface);
+  border-radius: 12px;
+  padding: 40px;
+  box-shadow: 0 10px 40px var(--shadow-color);
+}
+
+/* ==================== AUTH HEADER ==================== */
+.auth-header {
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.auth-header h1 {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 10px;
+}
+
+.auth-header p {
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+
+/* ==================== ROLE SELECTOR ==================== */
+.role-selector {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.role-btn {
+  flex: 1;
+  padding: 15px;
+  border: 2px solid var(--border-color);
+  border-radius: 8px;
+  background: var(--surface);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 14px;
+}
+
+.role-btn:hover {
+  border-color: #667eea;
+  background: var(--highlight);
+}
+
+.role-btn.active {
+  border-color: #667eea;
+  background: var(--highlight);
+}
+
+.role-icon {
+  font-size: 24px;
+  min-width: 24px;
+}
+
+.role-label {
+  text-align: left;
+}
+
+.role-label strong {
+  display: block;
+  color: var(--text-primary);
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.role-label small {
+  display: block;
+  color: var(--text-secondary);
+  font-size: 12px;
+}
+
+/* ==================== FORM ==================== */
+.auth-form {
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  font-family: inherit;
+  background: var(--surface);
+  color: var(--text-primary);
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.form-group input.error {
+  border-color: #ff6b6b;
+}
+
+.form-group input.error:focus {
+  box-shadow: 0 0 0 3px rgba(255, 107, 107, 0.1);
+}
+
+.error-text {
+  display: block;
+  color: #ff6b6b;
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+.error-message {
+  background: #ffe0e0;
+  border: 1px solid #ff6b6b;
+  border-radius: 6px;
+  padding: 12px;
+  color: #c92a2a;
+  font-size: 14px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.success-message {
+  background: #d4f4dd;
+  border: 1px solid #51cf66;
+  border-radius: 6px;
+  padding: 12px;
+  color: #2f7c31;
+  font-size: 14px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* ==================== CHECKBOX ==================== */
+.form-group.checkbox label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 400;
+  cursor: pointer;
+}
+
+.form-group.checkbox input[type="checkbox"] {
+  width: auto;
+  margin: 0;
+}
+
+.form-group.checkbox .link {
+  color: #667eea;
+  text-decoration: none;
+}
+
+.form-group.checkbox .link:hover {
+  text-decoration: underline;
+}
+
+/* ==================== FORM OPTIONS ==================== */
+.form-options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  font-size: 14px;
+}
+
+.form-options .checkbox {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  margin: 0;
+}
+
+.form-options .checkbox input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  margin: 0;
+}
+
+.form-options .link {
+  color: #667eea;
+  text-decoration: none;
+}
+
+.form-options .link:hover {
+  text-decoration: underline;
+}
+
+/* ==================== BUTTONS ==================== */
+.btn-primary-full {
+  width: 100%;
+  padding: 12px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: inherit;
+}
+
+.btn-primary-full:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+}
+
+.btn-primary-full:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* ==================== DIVIDER ==================== */
+.auth-divider {
+  position: relative;
+  margin: 25px 0;
+  text-align: center;
+}
+
+.auth-divider::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 100%;
+  height: 1px;
+  background: var(--border-color);
+}
+
+.auth-divider span {
+  background: var(--surface);
+  padding: 0 10px;
+  color: var(--text-secondary);
+  font-size: 13px;
+  position: relative;
+}
+
+/* ==================== SOCIAL LOGIN ==================== */
+.social-login {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.social-btn {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  background: var(--surface);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  font-family: inherit;
+  color: var(--text-primary);
+}
+
+.social-btn:hover {
+  border-color: var(--text-secondary);
+  background: var(--surface-alt);
+}
+
+.social-btn.google {
+  color: #1f2937;
+}
+
+.social-btn.linkedin {
+  color: #0a66c2;
+}
+
+/* ==================== AUTH FOOTER ==================== */
+.auth-footer {
+  text-align: center;
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin-top: 20px;
+}
+
+.auth-footer .link {
+  color: #667eea;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.auth-footer .link:hover {
+  text-decoration: underline;
+}
+
+/* ==================== INFO SECTION ==================== */
+.auth-info {
+  color: white;
+}
+
+.auth-info h2 {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 25px;
+}
+
+.auth-info ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.auth-info li {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.auth-info strong {
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.auth-info span {
+  font-size: 13px;
+  opacity: 0.9;
+}
+
+/* ==================== RESPONSIVE ==================== */
+@media (max-width: 768px) {
+  .auth-wrapper {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .auth-card {
+    padding: 30px 20px;
+  }
+
+  .auth-header h1 {
+    font-size: 24px;
+  }
+
+  .role-selector {
+    flex-direction: column;
+  }
+
+  .role-btn {
+    flex-direction: column;
+    padding: 12px;
+  }
+
+  .auth-info {
+    display: none;
+  }
+
+  .social-login {
+    flex-direction: column;
+  }
+
+  .social-btn {
+    width: 100%;
+  }
+}
+
+/* ==================== NAVBAR AUTH SECTION ==================== */
+.nav-auth-section {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-left: auto;
+}
+
+.nav-buttons {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.nav-buttons .btn-secondary,
+.nav-buttons .btn-primary {
+  padding: 8px 16px;
+  border-radius: 4px;
+  border: none;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.nav-buttons .btn-secondary {
+  border: 1px solid #667eea;
+  color: #667eea;
+  background: transparent;
+}
+
+.nav-buttons .btn-secondary:hover {
+  background: rgba(102, 126, 234, 0.1);
+}
+
+.nav-buttons .btn-primary {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+.nav-buttons .btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+}
+
+/* ==================== USER DROPDOWN ==================== */
+.user-dropdown {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  padding: 8px 12px;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+
+.user-dropdown:hover {
+  background: var(--highlight);
+}
+
+.user-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.user-name {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-primary);
+  max-width: 100px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ==================== DROPDOWN MENU ==================== */
+.user-dropdown-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 8px;
+  background: var(--surface);
+  border-radius: 8px;
+  box-shadow: 0 5px 20px var(--shadow-color);
+  z-index: 1000;
+  min-width: 200px;
+  overflow: hidden;
+}
+
+.user-dropdown-header {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.user-dropdown-header strong {
+  display: block;
+  color: var(--text-primary);
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+
+.user-dropdown-header small {
+  display: block;
+  color: var(--text-secondary);
+  font-size: 12px;
+}
+
+.dropdown-item {
+  display: block;
+  width: 100%;
+  padding: 12px 16px;
+  border: none;
+  background: none;
+  color: var(--text-primary);
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 13px;
+  font-family: inherit;
+  text-decoration: none;
+}
+
+.dropdown-item:hover {
+  background: var(--highlight);
+}
+
+.dropdown-item.logout {
+  color: #ff6b6b;
+  border-top: 1px solid var(--border-color);
+}
+
+/* ==================== MOBILE USER INFO ==================== */
+.mobile-user-info {
+  padding: 15px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+}
+
+.mobile-user-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.mobile-user-info > div {
+  flex: 1;
+}
+
+.mobile-user-info strong {
+  display: block;
+  font-size: 14px;
+  margin-bottom: 2px;
+}
+
+.mobile-user-info small {
+  display: block;
+  font-size: 12px;
+  opacity: 0.9;
+}
+
+.mobile-user-btn {
+  padding: 6px 12px;
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: 1px solid white;
+  border-radius: 4px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+
+.mobile-user-btn:hover {
+  background: var(--surface);
+  color: #667eea;
+}
+
+/* ==================== MOBILE AUTH BUTTONS ==================== */
+.mobile-auth-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 15px;
+  border-top: 1px solid var(--border-color);
+  margin-top: 15px;
+}
+
+.btn-secondary-full {
+  padding: 12px;
+  border: 1px solid #667eea;
+  color: #667eea;
+  background: transparent;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: block;
+  text-align: center;
+  font-family: inherit;
+}
+
+.btn-secondary-full:hover {
+  background: rgba(102, 126, 234, 0.1);
+}
+
+.mobile-auth-buttons .btn-primary-full {
+  margin: 0;
+}
+
+/* ==================== RESPONSIVE NAVBAR ==================== */
+@media (max-width: 1024px) {
+  .nav-auth-section {
+    position: fixed;
+    top: 15px;
+    right: 70px;
+  }
+
+  .user-dropdown-menu {
+    right: -10px;
+  }
+}
+
+@media (max-width: 768px) {
+  .nav-auth-section {
+    display: none;
+  }
+}

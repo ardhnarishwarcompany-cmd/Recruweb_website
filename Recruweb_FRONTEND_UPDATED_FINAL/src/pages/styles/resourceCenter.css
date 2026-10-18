@@ -1,0 +1,392 @@
+/* =================================================================     RESOURCE CENTER - MODERN DARK SAAS THEME     ================================================================= */
+
+.resume-checker-page {
+  padding: 32px;
+  background: #090d16;
+  min-height: calc(100vh - 70px);
+  color: #f1f5f9;
+  font-family:
+    "Inter",
+    system-ui,
+    -apple-system,
+    sans-serif;
+}
+
+/* Hero Section Fix for Dark Theme */
+.resource-center-page,
+div[style*="minHeight: 50vh"] {
+  background: #090d16 !important;
+  color: #f8fafc !important;
+}
+
+.resource-center-hero {
+  background: #090d16 !important;
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid #1f2937;
+  padding: 60px 0 40px 0 !important;
+  min-height: auto !important;
+}
+
+.hero-shapes {
+  position: absolute;
+  inset: 0;
+  opacity: 0.15;
+  pointer-events: none;
+}
+
+.section-header {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.section-tag {
+  display: inline-block;
+  background: rgba(59, 130, 246, 0.15);
+  color: #60a5fa;
+  border: 1px solid rgba(59, 130, 246, 0.3);
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  letter-spacing: 0.05em;
+}
+
+.section-title {
+  font-size: 2.5rem !important;
+  font-weight: 800;
+  color: #ffffff !important;
+  letter-spacing: -0.025em;
+  margin-bottom: 14px;
+}
+
+.section-subtitle {
+  color: #94a3b8 !important;
+  font-size: 1.05rem !important;
+  line-height: 1.6;
+}
+
+/* Stats Row Styling */
+.rc-stats-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 16px;
+  margin-top: 36px;
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+  background: #111827;
+  border: 1px solid #1f2937;
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.4);
+}
+
+.rc-stats-row > div {
+  text-align: center;
+  font-size: 0.85rem;
+  color: #94a3b8;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.rc-stats-row strong {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #60a5fa;
+}
+
+/* Tabs Navigation */
+.rc-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 32px 0 24px 0;
+  flex-wrap: wrap;
+}
+
+.rc-tab {
+  background: #111827;
+  border: 1px solid #374151;
+  color: #cbd5e1;
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.rc-tab:hover {
+  background: #1f2937;
+  color: #ffffff;
+  border-color: #4b5563;
+}
+
+.rc-tab.active {
+  background: #3b82f6;
+  border-color: #3b82f6;
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.35);
+}
+
+/* Filter Chips */
+.rc-filter-row {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.rc-chip {
+  background: #1f2937;
+  border: 1px solid #374151;
+  color: #94a3b8;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.rc-chip:hover {
+  background: #374151;
+  color: #ffffff;
+}
+
+.rc-chip.active {
+  background: #2563eb;
+  border-color: #3b82f6;
+  color: #ffffff;
+}
+
+/* Tables Styling */
+.rc-table-wrap {
+  background: #111827;
+  border: 1px solid #1f2937;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.4);
+}
+
+.rc-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 0.9rem;
+}
+
+.rc-table th {
+  background: #161e2e;
+  color: #cbd5e1;
+  font-weight: 700;
+  padding: 14px 18px;
+  border-bottom: 1px solid #1f2937;
+}
+
+.rc-table td {
+  padding: 14px 18px;
+  border-bottom: 1px solid #1f2937;
+  color: #f1f5f9;
+}
+
+.rc-table tr:hover td {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.rc-badge {
+  display: inline-block;
+  background: rgba(59, 130, 246, 0.15);
+  color: #60a5fa;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+/* Cards Grid for Templates & Checklists */
+.rc-card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+.rc-card {
+  background: #111827;
+  border: 1px solid #1f2937;
+  border-radius: 16px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2);
+}
+
+.rc-card:hover {
+  transform: translateY(-4px);
+  border-color: #3b82f6;
+  box-shadow: 0 15px 30px -10px rgba(59, 130, 246, 0.3);
+}
+
+.rc-card-icon {
+  font-size: 2rem;
+}
+
+.rc-card h4 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #f9fafb;
+  margin: 0;
+}
+
+.rc-card p {
+  font-size: 0.85rem;
+  color: #94a3b8;
+  line-height: 1.4;
+  margin: 0;
+  flex: 1;
+}
+
+.rc-card-meta {
+  font-size: 0.78rem;
+  color: #64748b;
+}
+
+/* Buttons inside Resource Center */
+.rc-btn {
+  background: #3b82f6;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.rc-btn:hover {
+  background: #2563eb;
+}
+
+.rc-btn-outline {
+  background: #1f2937;
+  border: 1px solid #4b5563;
+  color: #f3f4f6;
+}
+
+.rc-btn-outline:hover {
+  background: #374151;
+}
+
+/* Payroll Calculator Styling */
+.rc-calc {
+  background: #111827;
+  border: 1px solid #1f2937;
+  border-radius: 16px;
+  padding: 32px;
+  max-width: 700px;
+  margin: 0 auto;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+.rc-calc-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.rc-calc-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #f1f5f9;
+}
+
+.rc-calc-form input,
+.rc-calc-form select {
+  border: 1px solid #4b5563;
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 0.95rem;
+  color: #ffffff;
+  background: #1f2937;
+  outline: none;
+}
+
+.rc-calc-form input:focus,
+.rc-calc-form select:focus {
+  border-color: #60a5fa;
+  box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.25);
+}
+
+.rc-calc-result {
+  margin-top: 28px;
+  border-top: 1px solid #1f2937;
+  padding-top: 24px;
+}
+
+.rc-calc-headline {
+  background: #161e2e;
+  border: 1px solid #374151;
+  padding: 16px 20px;
+  border-radius: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.rc-calc-headline span {
+  font-size: 0.95rem;
+  color: #94a3b8;
+  font-weight: 600;
+}
+
+.rc-calc-headline strong {
+  font-size: 1.5rem;
+  color: #60a5fa;
+}
+
+.rc-empty {
+  text-align: center;
+  padding: 40px;
+  color: #94a3b8;
+  font-size: 0.95rem;
+}
+
+.rc-error {
+  background: rgba(239, 68, 68, 0.15);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  color: #f87171;
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  margin-top: 14px;
+}
+
+.rc-disclaimer {
+  font-size: 0.75rem;
+  color: #64748b;
+  margin-top: 16px;
+  text-align: center;
+}
+
+.rc-checklist-preview {
+  list-style: disc;
+  padding-left: 20px;
+  margin-top: 10px;
+  font-size: 0.82rem;
+  color: #94a3b8;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}

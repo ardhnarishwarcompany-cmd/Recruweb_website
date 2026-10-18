@@ -1,0 +1,5 @@
+Production backend fix:
+- Same-origin API + Socket.IO deployment
+- Serves bundled frontend at /
+- Explicit /assets and /media static serving
+- Explicit runtime api-config.js for current live domain

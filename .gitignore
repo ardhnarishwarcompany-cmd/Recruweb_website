@@ -1,0 +1,5 @@
+.env
+.env.*
+node_modules/
+Recruweb_BACKEND_UPDATED_FINAL/uploads/*
+!Recruweb_BACKEND_UPDATED_FINAL/uploads/.gitkeep

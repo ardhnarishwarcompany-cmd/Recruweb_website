@@ -1,0 +1,157 @@
+/* Full cinematic 3D neon earth: cyan atmosphere + magenta city data. */
+.stats-globe-3d{overflow:visible!important;border-radius:50%;isolation:isolate;background:radial-gradient(circle at 50% 48%,rgba(30,28,94,.44),rgba(6,7,28,.08) 60%,transparent 76%);box-shadow:0 0 110px rgba(124,60,255,.18),inset 0 0 55px rgba(87,232,255,.08)}
+.stats-globe-3d::before{content:"";position:absolute;z-index:-1;inset:-38%;border-radius:50%;pointer-events:none;background:radial-gradient(circle,rgba(235,55,255,.18) 0,rgba(58,96,255,.11) 34%,transparent 68%);filter:blur(22px);animation:nebulaPulse 5s ease-in-out infinite}
+.stats-globe-3d::after{content:"";position:absolute;z-index:-1;inset:5%;border-radius:50%;border:1px solid rgba(129,230,255,.25);box-shadow:0 0 38px rgba(77,229,255,.22),0 0 70px rgba(236,59,255,.16);pointer-events:none}
+.globe-3d-canvas{width:100%!important;height:100%!important;display:block;border-radius:50%;filter:drop-shadow(0 0 20px rgba(71,225,255,.42)) drop-shadow(0 0 42px rgba(245,38,220,.34))}
+.stats-globe-3d .globe-caption{position:absolute;bottom:-9%;left:50%;transform:translateX(-50%);z-index:3;width:max-content;text-align:center;pointer-events:none;color:rgba(230,239,255,.82);font-size:9px;font-weight:700;letter-spacing:.22em;text-shadow:0 0 12px rgba(89,230,255,.75)}
+.stats-globe-3d .globe-caption b{color:#7cecff;font-size:10px;text-shadow:0 0 15px rgba(124,236,255,.9)}
+@keyframes nebulaPulse{0%,100%{transform:scale(.94);opacity:.55}50%{transform:scale(1.09);opacity:1}}
+@media (prefers-reduced-motion:reduce){.stats-globe-3d::before{animation:none}.globe-3d-canvas{filter:none}}
+
+/* Reference-matched premium globe: magenta land lights + cyan atmospheric rim. */
+.stats-globe-reference{position:relative;isolation:isolate;overflow:visible!important;background:transparent!important;box-shadow:none!important;aspect-ratio:1;animation:referenceFloat 7s ease-in-out infinite;perspective:1200px;transform-style:preserve-3d}
+.stats-globe-reference::before{content:"";position:absolute;inset:-13%;z-index:-3;border-radius:50%;background:radial-gradient(circle,rgba(245,35,218,.20),rgba(100,54,255,.12) 38%,transparent 69%);filter:blur(22px);animation:referenceAura 5s ease-in-out infinite}
+.stats-globe-reference::after{display:none}
+.reference-globe-shell{position:absolute;inset:-7%;z-index:1;display:grid;place-items:center;transform-style:preserve-3d;animation:referenceEarthSpin 14s linear infinite;filter:drop-shadow(0 0 14px rgba(255,55,231,.75)) drop-shadow(0 0 28px rgba(92,130,255,.55));will-change:transform}
+.reference-globe-shell img{width:100%;height:100%;object-fit:contain;display:block;mix-blend-mode:screen;backface-visibility:hidden;transform:translateZ(1px)}
+.reference-globe-aurora{position:absolute;inset:7%;z-index:-1;border-radius:50%;background:radial-gradient(circle at 50% 50%,transparent 54%,rgba(255,51,225,.18) 67%,rgba(72,202,255,.18) 72%,transparent 78%);filter:blur(10px);animation:referenceAura 4s ease-in-out infinite}
+.reference-globe-orbit{position:absolute;z-index:3;left:50%;top:50%;border:1px solid rgba(239,164,255,.44);border-radius:50%;pointer-events:none;filter:drop-shadow(0 0 8px rgba(239,85,255,.5))}
+.orbit-a{width:118%;height:30%;transform:translate(-50%,-50%) rotate(-9deg) rotateX(67deg);animation:orbitSweepA 9s linear infinite}
+.orbit-b{width:104%;height:38%;border-color:rgba(89,224,255,.30);transform:translate(-50%,-50%) rotate(31deg) rotateX(70deg);animation:orbitSweepB 13s linear infinite reverse}
+.orbit-c{width:125%;height:20%;border-color:rgba(255,68,220,.20);transform:translate(-50%,-50%) rotate(-42deg) rotateX(75deg);animation:orbitSweepA 16s linear infinite reverse}
+.stats-globe-reference .globe-caption{position:absolute!important;z-index:6!important;bottom:-6%!important;left:50%!important;transform:translateX(-50%)!important;width:max-content;text-align:center;color:rgba(241,242,255,.86)!important;font-size:10px!important;font-weight:700;letter-spacing:.19em;text-shadow:0 0 12px rgba(255,75,231,.5)}
+.stats-globe-reference .globe-caption b{color:#74e9ff!important;font-size:12px;text-shadow:0 0 15px rgba(75,222,255,.9)}
+@keyframes referenceFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+/* Continuous globe rotation: spins around its vertical axis, not a static float. */
+@keyframes referenceEarthSpin{
+  0%{transform:rotateX(4deg) rotateY(0deg) scale(1)}
+  25%{transform:rotateX(2deg) rotateY(90deg) scale(1.018)}
+  50%{transform:rotateX(4deg) rotateY(180deg) scale(1.03)}
+  75%{transform:rotateX(2deg) rotateY(270deg) scale(1.018)}
+  100%{transform:rotateX(4deg) rotateY(360deg) scale(1)}
+}
+@keyframes referenceAura{0%,100%{opacity:.58;transform:scale(.96)}50%{opacity:1;transform:scale(1.08)}}
+@keyframes orbitSweepA{to{transform:translate(-50%,-50%) rotate(351deg) rotateX(67deg)}}
+@keyframes orbitSweepB{to{transform:translate(-50%,-50%) rotate(-329deg) rotateX(70deg)}}
+@media (prefers-reduced-motion:reduce){.stats-globe-reference,.reference-globe-shell,.reference-globe-aurora,.reference-globe-orbit{animation:none!important}}
+
+/* REAL-TIME WEBGL 3D GLOBE — replaces the previous rotating 2D image. */
+.stats-globe-webgl{animation:none!important;perspective:1500px;contain:layout paint style}
+.stats-globe-webgl::before{inset:-20%;filter:blur(28px);opacity:.9}
+.globe-webgl-wrap{position:absolute;inset:-10%;z-index:2;border-radius:50%;overflow:visible;opacity:0;transition:opacity .35s ease;will-change:transform}
+.globe-webgl-wrap canvas{display:block!important;width:100%!important;height:100%!important;outline:none;touch-action:none;filter:drop-shadow(0 0 16px rgba(255,42,224,.62)) drop-shadow(0 0 34px rgba(64,190,255,.45));transform:translateZ(0)}
+.stats-globe-webgl .reference-globe-aurora{inset:-2%;z-index:0;opacity:.95;background:radial-gradient(circle at 48% 47%,rgba(7,5,29,0) 47%,rgba(223,42,255,.18) 60%,rgba(54,195,255,.16) 69%,transparent 77%);filter:blur(12px);animation:referenceAura 5.5s ease-in-out infinite}
+.stats-globe-webgl .reference-globe-orbit{z-index:4;opacity:.72;will-change:transform}
+.stats-globe-webgl .globe-caption{z-index:7!important;bottom:-7%!important}
+@media (max-width:900px){.globe-webgl-wrap{inset:-8%}.stats-globe-webgl .globe-caption{bottom:-10%!important}}
+@media (prefers-reduced-motion:reduce){.stats-globe-webgl .reference-globe-aurora,.stats-globe-webgl .reference-globe-orbit{animation:none!important}}
+
+/* FINAL APPROVED LOOK — same reference globe + smooth lightweight 3D motion */
+.stats-globe-approved{
+  position:relative!important;
+  isolation:isolate;
+  perspective:1300px;
+  transform-style:preserve-3d;
+  animation:none!important;
+  overflow:visible!important;
+}
+.stats-globe-approved::before{display:none!important}
+.approved-globe-aura{
+  position:absolute; inset:-17%; z-index:-4; border-radius:50%;
+  background:radial-gradient(circle,rgba(255,38,226,.25) 0%,rgba(135,64,255,.16) 40%,rgba(33,125,255,.10) 56%,transparent 73%);
+  filter:blur(26px); pointer-events:none; animation:approvedAura 4.5s ease-in-out infinite;
+}
+.approved-globe-3d{
+  position:absolute; inset:-8%; border-radius:50%; overflow:hidden;
+  transform-style:preserve-3d; will-change:transform;
+  animation:approvedGlobeTurn 11s cubic-bezier(.42,0,.58,1) infinite;
+  box-shadow:0 0 15px rgba(94,151,255,.75),0 0 34px rgba(244,44,239,.72),0 0 70px rgba(162,43,255,.35),inset -24px 0 40px rgba(1,3,19,.52),inset 16px 0 28px rgba(107,73,255,.22);
+  backface-visibility:hidden; transform-origin:center;
+}
+.approved-globe-face{
+  position:absolute; inset:0; border-radius:50%;
+  background-image:url('/media/neon-3d-globe-reference.png');
+  background-size:cover;
+  background-position:center center;
+  background-repeat:no-repeat;
+  transform:scale(1.01) translateZ(0);
+  will-change:background-position,filter;
+  animation:approvedTextureMove 11s linear infinite;
+}
+.approved-globe-shade{
+  position:absolute; inset:0; border-radius:50%; pointer-events:none;
+  background:radial-gradient(circle at 35% 42%,transparent 0 32%,rgba(0,0,12,.08) 53%,rgba(0,0,10,.44) 76%,rgba(0,0,7,.78) 100%);
+  mix-blend-mode:multiply; opacity:.62; animation:approvedLightShift 11s ease-in-out infinite;
+}
+.approved-globe-rim{position:absolute;inset:1.2%;border-radius:50%;border:2px solid rgba(220,86,255,.72);box-shadow:inset 0 0 13px rgba(80,209,255,.68),0 0 12px rgba(255,42,225,.72),0 0 26px rgba(70,156,255,.55);pointer-events:none}
+.approved-globe-specular{position:absolute;inset:3%;border-radius:50%;background:radial-gradient(ellipse at 30% 24%,rgba(205,225,255,.30),rgba(139,184,255,.08) 16%,transparent 37%);mix-blend-mode:screen;opacity:.55;pointer-events:none;animation:approvedSpecular 11s ease-in-out infinite}
+.approved-orbit{position:absolute;left:50%;top:50%;width:124%;height:22%;border:2px dotted rgba(237,176,255,.66);border-radius:50%;z-index:5;pointer-events:none;filter:drop-shadow(0 0 7px rgba(255,55,234,.8));will-change:transform}
+.approved-orbit-a{transform:translate(-50%,-50%) rotate(-10deg);animation:approvedOrbitA 8s linear infinite}
+.approved-orbit-b{width:105%;height:14%;border-color:rgba(106,210,255,.55);transform:translate(-50%,-50%) rotate(16deg);animation:approvedOrbitB 10s linear infinite reverse}
+.stats-globe-approved .globe-caption{z-index:8!important;bottom:-7%!important}
+
+@keyframes approvedGlobeTurn{
+  0%{transform:rotateY(-17deg) rotateX(2deg) scale(1)}
+  25%{transform:rotateY(0deg) rotateX(-1deg) scale(1.012)}
+  50%{transform:rotateY(17deg) rotateX(2deg) scale(1.018)}
+  75%{transform:rotateY(0deg) rotateX(4deg) scale(1.012)}
+  100%{transform:rotateY(-17deg) rotateX(2deg) scale(1)}
+}
+@keyframes approvedTextureMove{
+  0%{background-position:42% 50%;filter:saturate(1.08) contrast(1.03)}
+  25%{background-position:47% 50%}
+  50%{background-position:54% 50%;filter:saturate(1.18) contrast(1.08)}
+  75%{background-position:48% 50%}
+  100%{background-position:42% 50%;filter:saturate(1.08) contrast(1.03)}
+}
+@keyframes approvedLightShift{0%,100%{transform:translateX(4%);opacity:.58}50%{transform:translateX(-5%);opacity:.76}}
+@keyframes approvedSpecular{0%,100%{transform:translateX(-3%) scale(.96);opacity:.42}50%{transform:translateX(12%) scale(1.05);opacity:.72}}
+@keyframes approvedAura{0%,100%{transform:scale(.96);opacity:.65}50%{transform:scale(1.06);opacity:1}}
+@keyframes approvedOrbitA{to{transform:translate(-50%,-50%) rotate(350deg)}}
+@keyframes approvedOrbitB{to{transform:translate(-50%,-50%) rotate(-344deg)}}
+@media (prefers-reduced-motion:reduce){.approved-globe-3d,.approved-globe-face,.approved-globe-shade,.approved-globe-specular,.approved-globe-aura,.approved-orbit{animation:none!important}}
+
+/* TRUE 3D WEBGL GLOBE — real rotating sphere, same neon look as the approved reference art */
+.stats-globe-webgl3d{position:relative!important;isolation:isolate;overflow:visible!important;background:transparent!important;box-shadow:none!important;aspect-ratio:1;animation:referenceFloat 7s ease-in-out infinite}
+.webgl3d-canvas-wrap{position:absolute;inset:-14%;z-index:2;border-radius:50%;overflow:visible;filter:drop-shadow(0 0 18px rgba(255,58,229,.55)) drop-shadow(0 0 42px rgba(64,190,255,.4))}
+.webgl3d-canvas-wrap canvas{display:block!important;width:100%!important;height:100%!important;outline:none;touch-action:none}
+.stats-globe-webgl3d .approved-globe-aura{z-index:1}
+.stats-globe-webgl3d .approved-orbit{z-index:5}
+.stats-globe-webgl3d .globe-caption{z-index:8!important;bottom:-7%!important}
+@media (max-width:900px){.webgl3d-canvas-wrap{inset:-10%}}
+@media (prefers-reduced-motion:reduce){.stats-globe-webgl3d{animation:none!important}}
+
+/* PATCH 2026-09-04 — supplied-reference globe treatment */
+.stats-globe-webgl3d{min-width:0;min-height:0;filter:saturate(1.08) contrast(1.04)}
+.stats-globe-webgl3d::before{content:"";position:absolute;inset:-24%;z-index:-5;border-radius:50%;background:radial-gradient(circle at 50% 47%,rgba(73,108,255,.22) 0,rgba(180,45,255,.18) 32%,rgba(255,35,221,.08) 50%,transparent 72%);filter:blur(24px);animation:approvedAura 4.5s ease-in-out infinite}
+.webgl3d-canvas-wrap{inset:-12%!important;filter:drop-shadow(0 0 10px rgba(73,197,255,.72)) drop-shadow(0 0 22px rgba(220,45,255,.64)) drop-shadow(0 0 48px rgba(115,56,255,.38))!important}
+.globe-star-field{position:absolute;inset:-20%;z-index:0;pointer-events:none;opacity:.72;background-image:radial-gradient(circle,rgba(255,255,255,.9) 0 1px,transparent 1.7px),radial-gradient(circle,rgba(255,51,226,.9) 0 1px,transparent 1.8px),radial-gradient(circle,rgba(90,180,255,.75) 0 1px,transparent 1.7px);background-size:79px 83px,113px 97px,151px 127px;background-position:7px 13px,35px 51px,72px 18px;mask-image:radial-gradient(circle,transparent 0 42%,#000 61%,transparent 84%)}
+.stats-globe-webgl3d .approved-globe-aura{inset:-18%;z-index:-3;background:radial-gradient(circle,rgba(255,37,225,.22),rgba(99,75,255,.13) 44%,transparent 72%)}
+.stats-globe-webgl3d .approved-orbit{border-width:2px;border-style:dotted;opacity:.9}
+.stats-globe-webgl3d .globe-caption{text-shadow:0 0 10px rgba(68,220,255,.7),0 0 22px rgba(217,48,255,.38)}
+
+/* PATCH 2026-09-04B — keep the supplied reference continents continuously visible */
+.stats-globe-webgl3d{animation:referenceFloat 7s ease-in-out infinite!important}
+.webgl3d-canvas-wrap{inset:-16%!important;filter:drop-shadow(0 0 12px rgba(69,174,255,.78)) drop-shadow(0 0 24px rgba(247,41,230,.78)) drop-shadow(0 0 55px rgba(142,54,255,.42))!important}
+.stats-globe-webgl3d .approved-orbit{opacity:.82}
+
+/* PATCH V3 — reference composition: smaller centered globe, detailed dotted continents.
+   Prevent the canvas from expanding beyond the intended hero composition. */
+.stats-globe-webgl3d{overflow:visible!important;filter:saturate(1.12) contrast(1.03)!important}
+.webgl3d-canvas-wrap{inset:-2%!important;filter:drop-shadow(0 0 9px rgba(75,190,255,.72)) drop-shadow(0 0 18px rgba(247,41,230,.72)) drop-shadow(0 0 38px rgba(142,54,255,.32))!important}
+.stats-globe-webgl3d::before{inset:-14%!important;opacity:.78!important;filter:blur(20px)!important}
+.stats-globe-webgl3d .approved-globe-aura{inset:-10%!important;opacity:.72!important}
+.stats-globe-webgl3d .approved-orbit{opacity:.68!important}
+.stats-globe-webgl3d .globe-caption{bottom:-5%!important}
+@media (max-width:900px){.webgl3d-canvas-wrap{inset:0!important}}
+
+
+/* PATCH FINAL BLUE REFERENCE — same true 3D rotating globe, blue data-network palette. */
+.stats-globe-webgl3d{animation:referenceFloat 7s ease-in-out infinite!important;filter:saturate(1.12) contrast(1.05)!important}
+.stats-globe-webgl3d::before{background:radial-gradient(circle at 50% 47%,rgba(17,115,255,.25) 0,rgba(30,72,210,.16) 37%,rgba(24,160,255,.08) 54%,transparent 73%)!important}
+.approved-globe-aura{background:radial-gradient(circle,rgba(22,121,255,.22),rgba(46,90,255,.13) 44%,transparent 72%)!important}
+.webgl3d-canvas-wrap{inset:-2%!important;filter:drop-shadow(0 0 9px rgba(51,175,255,.88)) drop-shadow(0 0 20px rgba(33,111,255,.72)) drop-shadow(0 0 44px rgba(36,83,220,.34))!important}
+.stats-globe-webgl3d .approved-orbit{border-color:rgba(83,193,255,.68)!important;filter:drop-shadow(0 0 7px rgba(48,158,255,.68))!important}
+.stats-globe-webgl3d .approved-orbit-b{border-color:rgba(122,116,255,.44)!important}
+.stats-globe-webgl3d .globe-caption{color:rgba(225,244,255,.9)!important;text-shadow:0 0 10px rgba(40,170,255,.75),0 0 22px rgba(32,87,255,.32)!important}
+.stats-globe-webgl3d .globe-caption b{color:#66d6ff!important;text-shadow:0 0 15px rgba(68,188,255,.92)!important}

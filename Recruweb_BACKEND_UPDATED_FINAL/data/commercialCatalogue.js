@@ -1,0 +1,160 @@
+// Official client-facing commercial catalogue — effective August 2026.
+// Prices are sourced from the supplied Recruweb Resources Pvt. Ltd. commercial document.
+// GST/statutory taxes are additional where applicable.
+export const COMMERCIAL_CATALOGUE = {
+  effectiveFrom: "August 2026",
+  company: {
+    name: "Recruweb Resources Pvt. Ltd.",
+    location: "Noida, Uttar Pradesh, India",
+    phone: "+91-9958256785",
+    email: "info@recruweb.com",
+    website: "http://www.recruweb.com",
+  },
+  recruitmentPlans: [
+    {
+      id: "recruitment-premium",
+      name: "Premium Recruitment Partnership",
+      fee: "8.33% of Annual CTC",
+      replacement: "4 Months FREE",
+      closure: "Within 7 working days",
+      token: 5000,
+      freeHrms: "4 months",
+      benefits: ["Fast hiring", "Extended replacement security", "HRMS included", "Negotiable for bulk hiring"],
+    },
+    {
+      id: "recruitment-standard",
+      name: "Standard Recruitment Partnership",
+      fee: "20 days candidate salary",
+      replacement: "3 Months FREE",
+      closure: "Within 7 working days",
+      token: 5000,
+      freeHrms: "3 months",
+      benefits: ["Reduced hiring cost", "Free replacement support", "HRMS included"],
+    },
+    {
+      id: "recruitment-startup",
+      name: "Startup Recruitment Partnership",
+      fee: "15 days candidate salary",
+      replacement: "2 Months FREE",
+      closure: "Within 7 working days",
+      token: 5000,
+      freeHrms: "2 months",
+      benefits: ["Lowest recruitment fee", "Startup-friendly model", "HRMS included"],
+    },
+  ],
+  outsourcingPlans: [
+    {
+      id: "enterprise-hr-outsourcing",
+      name: "Enterprise HR Outsourcing",
+      contract: "11 Months",
+      token: 5000,
+      replacement: "11 Months FREE",
+      pricing: "Monthly service charge calculated on total employee salary value as per agreed manpower scope.",
+      included: [
+        "Payroll Processing", "Attendance Management", "PF & ESIC Compliance", "HRMS Software",
+        "Operational HR Support", "Employee Documentation", "Offer & Joining Management",
+        "Exit Management", "Basic HR Audit Support",
+      ],
+    },
+  ],
+  hrTechnologyPlans: [
+    {
+      id: "hr-tech-starter",
+      name: "HR Technology Starter Plan",
+      mrp: 10000,
+      price: 5000,
+      unit: "month",
+      contractMonths: 11,
+      token: 5000,
+      hiringSupport: "5 candidates during 11 months",
+      included: ["Hiring support", "Free replacement support", "Payroll support", "Compliance support", "HRMS access", "Operational HR support"],
+    },
+    {
+      id: "hr-tech-growth",
+      name: "HR Technology Growth Plan",
+      mrp: 15000,
+      price: 11000,
+      unit: "month",
+      contractMonths: 11,
+      token: 5000,
+      hiringSupport: "15 candidates during 11 months",
+      included: ["Hiring support", "Free replacement support", "Payroll support", "Compliance support", "HRMS access", "Operational HR support"],
+    },
+    {
+      id: "hr-tech-enterprise",
+      name: "HR Technology Enterprise Plan",
+      mrp: 20000,
+      price: 16000,
+      unit: "month",
+      contractMonths: 11,
+      token: 5000,
+      hiringSupport: "Unlimited hiring support during 11 months",
+      included: ["Unlimited hiring support", "Unlimited replacement support", "Payroll support", "Compliance support", "HRMS access", "Operational HR support"],
+    },
+  ],
+  products: [
+    {
+      id: "ai-attendance",
+      name: "AI Automated Attendance System",
+      mrp: "₹499 per employee/month",
+      offer: "₹99 per employee/month",
+      contract: "11 Months",
+      token: 5000,
+      features: ["Geo-tagging", "Geo-fencing", "Mobile attendance", "Shift management", "Real-time attendance reports"],
+    },
+    {
+      id: "ai-interview",
+      name: "AI Candidate Interview System",
+      mrp: "₹299 per candidate",
+      offer: "₹99 per week",
+      contract: "11 Months",
+      token: 5000,
+      features: ["AI screening", "AI scoring", "Interview reports", "HR recommendation engine"],
+    },
+    {
+      id: "verification-portal",
+      name: "Employee Verification Portal",
+      mrp: "₹1,000 per employee",
+      offer: "₹999/month (Unlimited Verifications)",
+      contract: "11 Months",
+      features: ["Document verification", "ID verification", "Employment verification", "Background workflow"],
+    },
+    {
+      id: "hrms-standalone",
+      name: "Standalone HRMS Subscription",
+      mrp: 1000,
+      price: 299,
+      unit: "employee/month",
+      contractMonths: 11,
+      features: ["Attendance", "Leave management", "Payroll support", "Employee database", "Offer letters", "Experience letters", "Reports & analytics", "HR support desk"],
+    },
+  ],
+  universalTerms: [
+    "₹5,000 token payable at agreement signing for applicable plans; fully adjustable against final invoice.",
+    "Standard agreement period: 11 Months.",
+    "Recruitment invoices payable within 7 days of candidate joining.",
+    "Subscription invoices payable monthly in advance unless otherwise agreed.",
+    "Replacement is subject to the selected recruitment plan and clear client payments.",
+    "Bulk hiring, multi-location deployment, long-term outsourcing, and enterprise contracts are eligible for customized commercial discussion.",
+  ],
+};
+
+export const HRMS_PLANS = COMMERCIAL_CATALOGUE.hrTechnologyPlans.map((p) => ({
+  ...p,
+  category: "HR Technology",
+  paymentType: "token",
+}));
+
+HRMS_PLANS.push({
+  id: "hrms-standalone",
+  name: "Standalone HRMS Subscription",
+  mrp: 1000,
+  price: 299,
+  unit: "employee/month",
+  contractMonths: 11,
+  category: "Standalone HRMS",
+  paymentType: "monthly",
+  features: COMMERCIAL_CATALOGUE.products.find((p) => p.id === "hrms-standalone").features,
+});
+
+export const getHrmsPlan = (id) => HRMS_PLANS.find((plan) => plan.id === id);

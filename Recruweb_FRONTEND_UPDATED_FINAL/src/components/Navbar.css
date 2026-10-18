@@ -1,0 +1,123 @@
+.nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 999;
+  transition: all 0.4s ease;
+  background: var(--nav-bg);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+}
+
+.nav.scrolled {
+  box-shadow: 0 10px 30px var(--shadow);
+}
+
+.nav-inner {
+  max-width: 1400px;
+  margin: auto;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 30px;
+}
+.theme-toggle {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: var(--text);
+
+  background: linear-gradient(
+    135deg,
+    rgba(59, 130, 246, 0.15),
+    rgba(147, 51, 234, 0.15)
+  );
+
+  border: 1px solid var(--border);
+
+  transition: all 0.3s ease;
+}
+
+.theme-toggle:hover {
+  transform: translateY(-3px) rotate(15deg);
+
+  box-shadow:
+    0 10px 25px rgba(59, 130, 246, 0.25),
+    0 5px 10px rgba(147, 51, 234, 0.25);
+}
+.nav-link {
+  color: var(--text);
+  position: relative;
+  transition: 0.3s;
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  bottom: -6px;
+  left: 50%;
+  width: 0;
+  height: 2px;
+
+  background: linear-gradient(90deg, #2563eb, #7c3aed);
+
+  transition: 0.3s;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+  left: 0;
+}
+
+.nav-link:hover {
+  color: var(--primary);
+}
+.nav-search {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+
+  border-radius: 50px;
+  padding: 10px 18px;
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  min-width: 320px;
+}
+
+.nav-search input {
+  border: none;
+  outline: none;
+  background: transparent;
+  color: var(--text);
+  width: 100%;
+}
+
+/* Recruweb premium navigation skin */
+.pro-nav-bar{background:rgba(255,255,255,.72)!important;border-bottom:1px solid rgba(15,23,42,.08)!important;backdrop-filter:blur(18px) saturate(150%)!important;box-shadow:0 8px 28px rgba(15,23,42,.05)!important}
+.pro-nav-bar.scrolled{background:rgba(255,255,255,.88)!important;box-shadow:0 12px 34px rgba(15,23,42,.10)!important}
+[data-theme="dark"] .pro-nav-bar{background:rgba(6,12,23,.72)!important;border-color:rgba(148,163,184,.13)!important}
+[data-theme="dark"] .pro-nav-bar.scrolled{background:rgba(6,12,23,.9)!important}
+[data-theme="dark"] .pro-nav-link{color:#dbeafe!important}
+[data-theme="dark"] .pro-nav-link:hover,[data-theme="dark"] .pro-nav-link.active-tab{color:#67e8f9!important}
+[data-theme="dark"] .pro-nav-search{background:rgba(15,23,42,.65)!important;border-color:rgba(148,163,184,.16)!important}
+[data-theme="dark"] .pro-nav-search input{color:#eef6ff!important}
+[data-theme="dark"] .pro-nav-search input::placeholder{color:#71839b!important}
+[data-theme="dark"] .pro-user-btn{background:rgba(15,23,42,.72)!important;border-color:rgba(148,163,184,.16)!important}
+[data-theme="dark"] .user-name-label{color:#e5eef9!important}
+[data-theme="dark"] .pro-user-popover{background:#0f172a!important;border-color:#26344a!important}
+[data-theme="dark"] .popover-user-name,[data-theme="dark"] .popover-menu-btn{color:#e5eef9!important}
+[data-theme="dark"] .popover-user-role{color:#94a3b8!important}
+[data-theme="dark"] .popover-menu-btn:hover{background:#172235!important}
+[data-theme="dark"] .pro-hamburger-btn span{background:#e5eef9!important}
+[data-theme="dark"] .pro-drawer-content{background:#0a1220!important}
+[data-theme="dark"] .drawer-nav-list a{color:#e5eef9!important}
+[data-theme="dark"] .drawer-search-box input{background:#111b2d!important;color:#fff!important;border-color:#29384e!important}

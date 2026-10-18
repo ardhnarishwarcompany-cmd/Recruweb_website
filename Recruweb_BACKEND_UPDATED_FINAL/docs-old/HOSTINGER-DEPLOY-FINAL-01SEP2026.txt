@@ -1,0 +1,22 @@
+RECRUWEB — SAME-ORIGIN HOSTINGER DEPLOYMENT
+===========================================
+This backend package is self-contained: backend/index.js serves both:
+  /api/*  -> Express API
+  /       -> bundled frontend
+  /jobs, /login etc. -> SPA fallback
+
+Hostinger Node.js Web App:
+- Application/root directory: the directory containing backend/index.js
+- Startup file: index.js
+- Node version: use a current LTS supported by Hostinger
+- Domain: https://recruweb.com
+- The supplied backend/.env keeps the existing DB/API credentials unchanged.
+
+Do NOT deploy a separate static frontend to public_html at the same time as
+the Node app on the same hostname, because that can cause /api requests to
+return the frontend HTML (the exact symptom seen in the browser console).
+
+After deployment, test:
+  https://recruweb.com/api
+  https://recruweb.com/api/health
+Both must return JSON, not an HTML page.
